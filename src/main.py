@@ -75,9 +75,9 @@ class Game:
         """Draw a gradient background"""
         for y in range(HEIGHT):
             ratio = y / HEIGHT
-            r = int(color1[0] * (1 - ratio) + color2[0] * ratio)
-            g = int(color1[1] * (1 - ratio) + color2[1] * ratio)
-            b = int(color1[2] * (1 - ratio) + color2[2] * ratio)
+            r = max(0, min(255, int(color1[0] * (1 - ratio) + color2[0] * ratio)))
+            g = max(0, min(255, int(color1[1] * (1 - ratio) + color2[1] * ratio)))
+            b = max(0, min(255, int(color1[2] * (1 - ratio) + color2[2] * ratio)))
             pygame.draw.line(self.screen, (r, g, b), (0, y), (WIDTH, y))
 
     def draw_text(self, text, size, color, x, y, center=False, shadow=False):
